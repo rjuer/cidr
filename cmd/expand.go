@@ -5,14 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/spf13/cobra"
 	"github.com/open-policy-agent/opa/rego"
+	"github.com/spf13/cobra"
 )
 
-
-
 func init() {
-  rootCmd.AddCommand(expandCmd)
+	rootCmd.AddCommand(expandCmd)
 }
 
 var expandCmd = &cobra.Command{

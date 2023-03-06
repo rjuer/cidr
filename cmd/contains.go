@@ -4,14 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/spf13/cobra"
 	"github.com/open-policy-agent/opa/rego"
+	"github.com/spf13/cobra"
 )
 
-
-
 func init() {
-  rootCmd.AddCommand(containsCmd)
+	rootCmd.AddCommand(containsCmd)
 }
 
 var containsCmd = &cobra.Command{
