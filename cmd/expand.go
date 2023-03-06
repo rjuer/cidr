@@ -25,7 +25,7 @@ cidr expand 192.168.0.0/24
 	Run: func(cmd *cobra.Command, args []string) {
 		cidr := args[0]
 
-		res, err := expand(cidr)
+		res, err := Expand(cidr)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -34,7 +34,7 @@ cidr expand 192.168.0.0/24
 	},
 }
 
-func expand(cidr string) (string, error) {
+func Expand(cidr string) (string, error) {
 	ctx := context.Background()
 
 	module := `

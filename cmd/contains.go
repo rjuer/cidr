@@ -3,6 +3,7 @@ package cmd
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/open-policy-agent/opa/rego"
 	"github.com/spf13/cobra"
@@ -29,7 +30,7 @@ cidr contains 192.168.0.0/16 192.168.0.0/24`,
 		cidr := args[0]
 		ip := args[1]
 
-		res, err := contains(cidr, ip)
+		res, err := Contains(cidr, ip)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -37,7 +38,7 @@ cidr contains 192.168.0.0/16 192.168.0.0/24`,
 	},
 }
 
-func contains(cidr string, ip string) (string, error) {
+func Contains(cidr string, ip string) (bool, error) {
 	ctx := context.Background()
 
 	module := `
@@ -61,11 +62,15 @@ func contains(cidr string, ip string) (string, error) {
 		),
 	)
 
-	rs, err := reg.Eval(ctx)
+	res, err := reg.Eval(ctx)
 	if err != nil {
-		return "", err
+		return false, err
 	}
 
-	res := fmt.Sprintf("%v\n", rs[0].Expressions[0])
-	return res, nil
+	boolRes, err := strconv.ParseBool(fmt.Sprintf("%v", res[0].Expressions[0]))
+	if err != nil {
+		return false, err
+	}
+
+	return boolRes, nil
 }
