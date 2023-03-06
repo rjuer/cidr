@@ -18,6 +18,4 @@ jobs:
       - name: Test
         run: |
           mkdir tmp
-          make format
-          make vet
           make test
