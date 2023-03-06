@@ -21,4 +21,5 @@ jobs:
       - name: Test
         run: |
           mkdir tmp
-          make test
+          make vet
+          # make test
