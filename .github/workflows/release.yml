@@ -8,16 +8,20 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        goos: ["linux", "darwin"]
+        goarch: ["amd64", "arm64"]
     steps:
       - uses: actions/checkout@v3
       - name: Install Go toolchain
         uses: actions/setup-go@v3
         with:
-          go-version: '1.20'
+          go-version: "1.20.1"
       - name: Build
         run: |
           mkdir dist
-          make build
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags "-s -w" -o dist/
       - name: Test
         run: |
           mkdir tmp
@@ -28,21 +32,25 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        goos: ["linux", "darwin"]
+        goarch: ["amd64", "arm64"]
     steps:
       - uses: actions/checkout@v3
       - name: Install Go toolchain
         uses: actions/setup-go@v3
         with:
-          go-version: '1.20'
+          go-version: "1.20.1"
       - name: Build
         run: |
           mkdir dist
-          make build
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags "-s -w" -o dist/
           chmod +x dist/cidr
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: cidr
+          name: cidr-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/cidr
       - name: Release
         uses: softprops/action-gh-release@v1
