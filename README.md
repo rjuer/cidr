@@ -9,7 +9,7 @@ The binary is currently not available via a package manager.
 For now, you can simply download the binary to you local machine, e.g. using
 
 ``` shell
-wget https://github.com/rjuer/cidr/releases/download/v0.1.0/cidr && chmod +x cidr
+wget https://github.com/rjuer/cidr/releases/download/v0.0.1/cidr && chmod +x cidr
 ```
 
 ## Usage

@@ -10,7 +10,7 @@ var rootCmd = &cobra.Command{
 	Use:     "cidr",
 	Short:   "Application to operate with CIDR blocks",
 	Long:    `Handles basic operations related to CIDR blocks.`,
-	Version: "v0.1",
+	Version: "v0.0.1",
 }
 
 func Execute() {
