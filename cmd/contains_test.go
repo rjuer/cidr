@@ -15,7 +15,7 @@ var containsTests = []struct {
 	{"192.168.0.0/24", "192.168.2.5", false},
 	{"192.168.0.0/16", "192.167.2.5", false},
 	{"192.168.0.0/16", "192", false},
-	{"192.168.0.", "192", true},
+	{"192.168.0.", "192", false},
 }
 
 func TestContains(t *testing.T) {
