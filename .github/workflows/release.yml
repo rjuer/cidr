@@ -24,6 +24,8 @@ jobs:
           make test
   release:
     needs: test
+    permissions:
+      contents: write
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
