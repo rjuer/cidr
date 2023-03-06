@@ -1,16 +1,23 @@
-format:
+.DEFAULT_GOAL:=help
+
+##@ Format
+help:
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+
+format:  ## Format code with `go fmt`
 	go fmt $$(go list ./...)
 
-vet:
+vet:  ## Vet with `go fmt`
 	go vet $$(go list ./...)
 
-test:
+##@ Test
+test: ## Run tests in all packages and generate coverage report
 	go test $$(go list ./...) -coverprofile tmp/coverage.out
 
-coverage:
+cov: ## Print coverage report
 	go tool cover -func tmp/coverage.out
 
-coverage-html:
+cov-html: ## View coverage report as HTML
 	go tool cover -html=tmp/coverage.out
 
 .PHONY: format vet test coverage coverage-html
