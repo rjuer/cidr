@@ -10,9 +10,16 @@ format:  ## Format code with `go fmt`
 vet:  ## Vet with `go fmt`
 	go vet $$(go list ./...)
 
+##@ Build
+build: ## Build application
+	go build -o dist/
+
 ##@ Test
 test: ## Run tests in all packages and generate coverage report
 	go test $$(go list ./...) -coverprofile tmp/coverage.out
+
+test-verbose: ## Run tests in all packages and generate coverage report
+	go test $$(go list ./...) -coverprofile tmp/coverage.out -v
 
 cov: ## Print coverage report
 	go tool cover -func tmp/coverage.out
@@ -20,4 +27,4 @@ cov: ## Print coverage report
 cov-html: ## View coverage report as HTML
 	go tool cover -html=tmp/coverage.out
 
-.PHONY: format vet test coverage coverage-html
+.PHONY: format vet make test test-verbose coverage coverage-html
