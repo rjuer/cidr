@@ -12,7 +12,7 @@ vet:  ## Vet with `go fmt`
 
 ##@ Build
 build: ## Build application
-	go build -o dist/
+	go build -ldflags "-s -w" -o dist/
 
 ##@ Test
 test: ## Run tests in all packages and generate coverage report
