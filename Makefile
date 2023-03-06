@@ -27,4 +27,12 @@ cov: ## Print coverage report
 cov-html: ## View coverage report as HTML
 	go tool cover -html=tmp/coverage.out
 
-.PHONY: format vet make test test-verbose coverage coverage-html
+##@ Misc
+all: ## Run all checks and tests
+	make format
+	make build
+	make vet
+	make test-verbose
+	make cov
+
+.PHONY: format vet make test test-verbose coverage coverage-html all
