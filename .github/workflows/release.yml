@@ -51,9 +51,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cidr-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: dist/cidr
+          path: dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: dist/cidr
+          files: dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
