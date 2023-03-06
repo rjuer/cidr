@@ -4,13 +4,11 @@ import (
 	"testing"
 )
 
-type addContainsTest struct {
+var containsTests = []struct {
 	cidr     string
 	ip       string
 	expected bool
-}
-
-var addContainsTests = []addContainsTest{
+}{
 	{"192.168.0.0/16", "192.168.2.4", true},
 	{"192.168.0.0/16", "192.168.2.5", true},
 	{"192.168.0.0/24", "192.168.2.4", false},
@@ -21,7 +19,7 @@ var addContainsTests = []addContainsTest{
 }
 
 func TestContains(t *testing.T) {
-	for _, test := range addContainsTests {
+	for _, test := range containsTests {
 		if got, _ := Contains(test.cidr, test.ip); got != test.expected {
 			t.Errorf("Output %t not equal to expected %t", got, test.expected)
 		}
