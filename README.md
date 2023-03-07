@@ -6,11 +6,13 @@ CLI application for basic operations with CIDR blocks based on https://github.co
 
 The binary is currently not available via a package manager.
 
-For now, you can simply download the binary to you local machine, e.g. using
+For now, you can simply download the binary to you local machine, e.g. for Apple silicon chips using:
 
 ``` shell
-wget https://github.com/rjuer/cidr/releases/download/v0.1.0/cidr && chmod +x cidr
+wget https://github.com/rjuer/cidr/releases/download/v0.1.0/cidr-darwin-arm64 -O cidr && chmod +x cidr
 ```
+
+Builds are currently available for all combinations of `[linux, darwin]` and `[amd64, arm64]`.
 
 ## Usage
 
