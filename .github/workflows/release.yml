@@ -45,13 +45,14 @@ jobs:
       - name: Build
         run: |
           mkdir dist
-          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags "-s -w" -o dist/
-          chmod +x dist/cidr
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags "-s -w" -o dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
+          chmod +x dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: cidr-${{ matrix.goos }}-${{ matrix.goarch }}
           path: dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
+          if-no-files-found: error
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
