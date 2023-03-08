@@ -4,15 +4,16 @@ CLI application for basic operations with CIDR blocks based on https://github.co
 
 ## Installation
 
-The binary is currently not available via a package manager.
+The easiest way to install `cidr` is via `go install`:
 
-For now, you can simply download the binary to you local machine, e.g. for Apple silicon chips using:
-
-``` shell
-wget https://github.com/rjuer/cidr/releases/download/v0.1.0/cidr-darwin-arm64 -O cidr && chmod +x cidr
+```shell
+go install github.com/rjuer/cidr@latest
 ```
 
-Builds are currently available for all combinations of `[linux, darwin]` and `[amd64, arm64]`.
+Your may also download the appropriate release for your platform from the
+[releases page](https://github.com/rjuer/cidr/releases).
+
+Binaries are currently available for all combinations of `[linux, darwin]` and `[amd64, arm64]`.
 
 ## Usage
 
