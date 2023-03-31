@@ -3,7 +3,7 @@ module github.com/rjuer/cidr
 go 1.20
 
 require (
-	github.com/open-policy-agent/opa v0.50.1
+	github.com/open-policy-agent/opa v0.51.0
 	github.com/spf13/cobra v1.6.1
 )
 
