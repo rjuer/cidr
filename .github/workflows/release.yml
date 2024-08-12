@@ -13,7 +13,7 @@ jobs:
         goos: ["linux", "darwin"]
         goarch: ["amd64", "arm64"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Go toolchain
         uses: actions/setup-go@v4
         with:
@@ -37,7 +37,7 @@ jobs:
         goos: ["linux", "darwin"]
         goarch: ["amd64", "arm64"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install Go toolchain
         uses: actions/setup-go@v4
         with:
