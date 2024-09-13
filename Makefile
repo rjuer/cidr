@@ -42,4 +42,4 @@ update-deps: ## Update go.mod (e.g. remove unused dependencies) and go.sum (cont
 	go mod tidy
 	go mod verify
 
-.PHONY: format vet make test test-verbose coverage coverage-html all
+.PHONY: format vet build test test-verbose cov cov-html all update-deps
