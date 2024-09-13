@@ -17,7 +17,7 @@ jobs:
       - name: Build
         run: |
           mkdir dist
-          go build -ldflags "-s -w" -o dist/
+          make build
       - name: Test
         run: |
           mkdir tmp

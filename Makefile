@@ -13,7 +13,7 @@ vet:  ## Vet to find also sublte issues in the code
 
 ##@ Build
 build: ## Build application
-	go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
+	go build -ldflags="-s -w X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
 	@# go build -ldflags "-s -w" -o dist/
 
 ##@ Test
@@ -29,7 +29,6 @@ cov: ## Print coverage report
 cov-html: ## View coverage report as HTML
 	go tool cover -html=tmp/coverage.out
 
-
 ##@ Misc
 all: ## Run all checks and tests
 	make format
@@ -42,4 +41,7 @@ update-deps: ## Update go.mod (e.g. remove unused dependencies) and go.sum (cont
 	go mod tidy
 	go mod verify
 
-.PHONY: format vet build test test-verbose cov cov-html all update-deps
+install: ## Install go module locally
+	go install github.com/rjuer/cidr@latest
+
+.PHONY: format vet build test test-verbose cov cov-html all update-deps install
