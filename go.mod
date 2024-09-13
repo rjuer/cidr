@@ -1,6 +1,6 @@
 module github.com/rjuer/cidr
 
-go 1.20
+go 1.22
 
 require (
 	github.com/open-policy-agent/opa v0.50.1
