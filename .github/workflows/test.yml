@@ -14,10 +14,14 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.22.4"
+      - name: Get latest Git tag
+        run: 
+          VERSION=$(git describe --tags --abbrev=0)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Build
         run: |
           mkdir dist
-          make build
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
       - name: Test
         run: |
           mkdir tmp
