@@ -7,7 +7,7 @@ help:
 format:  ## Format code with `go fmt`
 	go fmt $$(go list ./...)
 
-vet:  ## Vet with `go fmt`
+vet:  ## Vet to find also sublte issues in the code
 	go vet $$(go list ./...)
 
 ##@ Build
@@ -27,6 +27,7 @@ cov: ## Print coverage report
 cov-html: ## View coverage report as HTML
 	go tool cover -html=tmp/coverage.out
 
+
 ##@ Misc
 all: ## Run all checks and tests
 	make format
@@ -34,5 +35,9 @@ all: ## Run all checks and tests
 	make vet
 	make test-verbose
 	make cov
+
+update-deps: ## Update go.mod (e.g. remove unused dependencies) and go.sum (containing all dependency checksums)
+	go mod tidy
+	go mod verify
 
 .PHONY: format vet make test test-verbose coverage coverage-html all
