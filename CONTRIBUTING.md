@@ -7,6 +7,6 @@ This guide is under development.
 New releases are triggered manually.
 
 Releasing a new version involves these steps:
-* Update the version in `cmd/root.go`
-* Optionally, update the example version in the README
-* Create a new Git tag like `v0.1.0`, following semantic versioning
+* Create a new Git tag like `v0.1.0`, following semantic versioning.
+  The tag is automatically used in the build for `cidr --version`
+  and a new release is created.
