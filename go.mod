@@ -1,11 +1,8 @@
 module github.com/rjuer/cidr
 
 go 1.22
-<<<<<<< HEAD
-=======
 
 toolchain go1.22.4
->>>>>>> d3dc4f91d2c56cdf6888c889befa0cea45104bf8
 
 require (
 	github.com/open-policy-agent/opa v0.68.0
