@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: |
           mkdir dist
-          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$VERSION'" -o dist/
       - name: Test
         run: |
           mkdir tmp
