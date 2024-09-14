@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
           mkdir dist
-          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
       - name: Test
         run: |
           mkdir tmp
@@ -53,7 +53,7 @@ jobs:
       - name: Build
         run: |
           mkdir dist
-          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
+          env GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
           chmod +x dist/cidr-${{ matrix.goos }}-${{ matrix.goarch }}
       - name: Upload artifact
         uses: actions/upload-artifact@v4
