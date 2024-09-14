@@ -15,9 +15,7 @@ jobs:
         with:
           go-version: "1.22.4"
       - name: Get latest Git tag
-        run: 
-          VERSION=$(git describe --tags --abbrev=0)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+        run: echo "VERSION=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: Build
         run: |
           mkdir dist
