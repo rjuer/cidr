@@ -4,15 +4,18 @@ CLI application for basic operations with CIDR blocks based on https://github.co
 
 ## Installation
 
-The easiest way to install `cidr` is via `go install`:
-
-```shell
-go install github.com/rjuer/cidr@latest
-```
-
-Your may also download the appropriate release for your platform from the
+Download the latest release for your platform from the
 [releases page](https://github.com/rjuer/cidr/releases). Binaries are currently
 available for all combinations of `[linux, darwin]` and `[amd64, arm64]`.
+For `darwin` and `arm64` this is:
+```sh
+wget https://github.com/rjuer/cidr/releases/latest/download/cidr-darwin-arm64 -O $HOME/bin/cidr && chmod +x $HOME/bin/cidr
+```
+
+You can download a specific version as well:
+```sh
+wget https://github.com/rjuer/cidr/releases/download/v0.2.3/cidr-darwin-arm64 -O $HOME/bin/cidr && chmod +x $HOME/bin/cidr
+```
 
 ## Usage
 
