@@ -13,7 +13,7 @@ vet:  ## Vet to find also sublte issues in the code
 
 ##@ Build
 build: ## Build application
-	go build -ldflags="-s -w X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
+	go build -ldflags="-s -w -X 'github.com/rjuer/cidr/cmd.version=$(VERSION)'" -o dist/
 	@# go build -ldflags "-s -w" -o dist/
 
 ##@ Test
