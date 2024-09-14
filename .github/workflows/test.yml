@@ -9,7 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # ensure all history and tags are fetched
       - name: Install Go toolchain
         uses: actions/setup-go@v5
         with:
